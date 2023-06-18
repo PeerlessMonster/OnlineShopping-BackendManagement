@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <link href="__ROOT__/public/static/css/bootstrap.min.css" rel="stylesheet" />
+    
+    <link href="__ROOT__/public/static/css/login.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="__ROOT__/public/static/js/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+    <img src="__ROOT__/public/static/image/logininfo.png" id="loginImg" />
+    <form id="loginForm" >
+        <div class="fs-1" id="loginTitleTx">网上商城后台管理系统</div>
+        <div class="mb-3">
+            <div class="form-floating">
+                <input type="tel" class="form-control" placeholder="手机号" name="username"/>
+                <label>账号</label>
+            </div>
+            <div class="prompt" id="username-empty">账号不能为空！</div>
+        </div>
+        <div class="mb-3">
+            <div class="form-floating">
+                <input type="password" class="form-control" placeholder="密码" name="password" />
+                <label>密码</label>
+            </div>
+            <div class="prompt" id="password-empty">密码不能为空！</div>
+        </div>
+        <div id="loginBtnGroup">
+            <button type="button" class="btn btn-primary btn-lg" id="loginBtn">登录</button>
+        </div>
+    </form>
+
+    <script type="text/javascript" src="__ROOT__/public/static/js/login.js"></script>
+</body>
+</html>

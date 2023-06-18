@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品管理</title>
+    <link href="__ROOT__/public/static/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="__ROOT__/public/static/css/main.css" rel="stylesheet" />
+    <link href="__ROOT__/public/static/css/navbar.css" rel="stylesheet" />
+    <link href="__ROOT__/public/static/css/good.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="__ROOT__/public/static/js/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+      <symbol id="grid" viewBox="0 0 16 16">
+        <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+      </symbol>
+      <symbol id="collection" viewBox="0 0 16 16">
+        <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z"/>
+      </symbol>
+      <symbol id="people-circle" viewBox="0 0 16 16">
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+      </symbol>
+      <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">
+        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+      </symbol>
+    </svg>
+
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" id="sidebar">
+        <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+          <span class="fs-3" id="sidebarTitleTx">网上商城后台管理系统</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="fun">
+            <a href="../order/order.html" class="nav-link link-dark" aria-current="page">
+              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href='#collection'/></svg>
+              <span>订单管理</span>
+            </a>
+          </li>
+          <li class="fun">
+            <a href="#" class="nav-link active" aria-current="page">
+              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href='#grid'/></svg>
+              <span>商品管理</span>
+            </a>
+          </li>
+        </ul>
+        <hr>
+        <div class="dropdown">
+          <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg class="bi pe-none me-2" width="32" height="32"><use xlink:href="#people-circle"/></svg>
+            <strong>Admin</strong>
+          </a>
+          <ul class="dropdown-menu text-small shadow">
+            <li><a class="dropdown-item" href="#" id="changePassword">修改密码</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li id="logoutLi"><a class="dropdown-item" href="#">退出登录</a></li>
+          </ul>
+        </div>
+      </div>
+    
+    <main>
+      <div class="main-frame-box">
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    按入库时间排序
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">按名称排序</a></li>
+                    <li><a class="dropdown-item" href="#">按入库时间排序</a></li>
+                    <li><a class="dropdown-item" href="#">按库存排序</a></li>
+                    <li><a class="dropdown-item" href="#">按单价排序</a></li>
+                  </ul>
+              <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="输入商品名称关键字……" aria-label="Search">
+                <button class="btn btn-outline-success" type="button" id="search">搜索</button>
+              </form>
+            </div>
+          </nav>
+    
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">名称</th>
+                <th scope="col">单价</th>
+                <th scope="col">库存</th>
+                <th scope="col">重量</th>
+                <th scope="col">&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+              {volist name='goodsList' id='goodItem'}
+              <tr class='table-info'>
+                <th scope="row">
+                    <span>{$goodItem.id}</span>
+                    <input class="form-check-input" type="checkbox" id="flexCheckDefault">
+                </th>
+                <td>{$goodItem.name}</td>
+                <td>{$goodItem.price}</td>
+                <td>{$goodItem.num}</td>
+                <td>{$goodItem.weight}</td>
+                <td class="image">
+                  <!-- <img src="__ROOT__/../phpBigHomework/pic/{$goodItem.pic_id}.jpg" /> -->
+                  <img src="__ROOT__/public/uploads/{$goodItem.pic_id}.jpg" />
+                </td>
+              </tr>
+              {/volist}
+              <!-- <tr class='table-info'>
+                <th scope="row">
+                    <span>2</span>
+                    <input class="form-check-input" type="checkbox" id="flexCheckDefault">
+                </th>
+                <td>西班牙进口 谷优（Gullon） 奇亚籽咸香小饼干罐装</td>
+                <td>79.90</td>
+                <td>1000</td>
+                <td>400g</td>
+                <td class="image"><img src="__ROOT__/../phpBigHomework/pic/goods2.jpg" /></td>
+              </tr> -->
+            </tbody>
+          </table>
+    
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button type="button" class="btn btn-outline-primary"
+            data-bs-toggle="modal" data-bs-target="#exampleModal"
+            id="alter">修改</button>
+            <button type="button" class="btn btn-outline-primary"
+            data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+            id="delete">删除</button>
+          </div>
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="add">添加</button>
+        </div>
+
+
+        <!-- 修改、增加对话框 -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">输入商品信息</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form id="submitGoodInfo" enctype="multipart/form-data" method="POST">
+                  <input type="text" name="good-id" id="good-id" style="display: none;" /> 
+                  <div class="mb-3">
+                    <label class="form-label">名称<span>*</span></label>
+                    <input type="text" class="form-control" name="name" />
+                    <div class="prompt" id="name-empty">名称不能为空！</div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">单价<span>*</span></label>
+                    <div class="input-group">
+                      <span class="input-group-text">￥</span>
+                      <input type="text" class="form-control" name="price-integer" placeholder="0" aria-label="Username">
+                      <span class="input-group-text">.</span>
+                      <input type="text" class="form-control" name="price-fraction" placeholder="00" aria-label="Server">
+                    </div>
+                    <div class="prompt" id="price-empty">单价不能为空！</div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">库存<span>*</span></label>
+                    <input type="text" class="form-control" name="number" />
+                    <div class="prompt" id="number-empty">库存不能为空！</div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">重量<span>*</span></label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="weight" />
+                      <span class="input-group-text">g (克)</span>
+                    </div>
+                    <div class="prompt" id="weight-empty">重量不能为空！</div>
+                  </div>
+                  <div>
+                    <label for="formFile" class="form-label">图片<span>*</span></label>
+                    <div class="input-group" id="pic-part">
+                      <input type="file" accept="image/*" name="pic" class="form-control" />
+                      <button class="btn btn-primary" type="button" id="clear-pic" disabled>清除选择</button>
+                    </div>
+                    <div class="prompt" id="pic-empty">图片不能为空！</div>
+                    <img src="__ROOT__/public/static/image/pic_empty.png" class="img-thumbnail" id="showPic" />
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="reset" form="submitGoodInfo" class="btn btn-secondary" id="reset">清空</button>
+                <button type="submit" form="submitGoodInfo" formaction="addGood" formmethod="POST" class="btn btn-primary" id="post">保存</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 删除对话框 -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">确认删除以下商品？</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <ul class="list-group">
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="deleteSubmit">确认</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+        <nav aria-label="Page navigation example">
+            <!-- <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item disabled"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul> -->
+            {$goodsList->render()}
+          </nav>
+    </main> 
+    <script type="text/javascript" src="__ROOT__/public/static/js/bootstrap.bundle.min.js"></script>
+
+    <script type="text/javascript" src="__ROOT__/public/static/js/main.js"></script>
+    <script type="text/javascript" src="__ROOT__/public/static/js/logout.js"></script>
+    <script type="text/javascript" src="__ROOT__/public/static/js/good.js"></script>
+</body>
+</html>

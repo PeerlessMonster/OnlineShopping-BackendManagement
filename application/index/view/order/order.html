@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>订单管理</title>
+    <link href="__ROOT__/public/static/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="__ROOT__/public/static/css/main.css" rel="stylesheet" />
+    <link href="__ROOT__/public/static/css/navbar.css" rel="stylesheet" />
+    <link href="__ROOT__/public/static/css/order.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="__ROOT__/public/static/js/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+      <symbol id="grid" viewBox="0 0 16 16">
+        <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+      </symbol>
+      <symbol id="collection" viewBox="0 0 16 16">
+        <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z"/>
+      </symbol>
+      <symbol id="people-circle" viewBox="0 0 16 16">
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+      </symbol>
+    </svg>
+
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" id="sidebar">
+        <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+          <span class="fs-3" id="sidebarTitleTx">网上商城后台管理系统</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="fun">
+            <a href="#" class="nav-link active" aria-current="page">
+              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href='#collection'/></svg>
+              <span>订单管理</span>
+            </a>
+          </li>
+          <li class="fun">
+            <a href="../good/good.html" class="nav-link link-dark" aria-current="page">
+              <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href='#grid'/></svg>
+              <span>商品管理</span>
+            </a>
+          </li>
+        </ul>
+        <hr>
+        <div class="dropdown">
+          <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg class="bi pe-none me-2" width="32" height="32"><use xlink:href="#people-circle"/></svg>
+            <strong>Admin</strong>
+          </a>
+          <ul class="dropdown-menu text-small shadow">
+            <li><a class="dropdown-item" href="#" id="changePassword">修改密码</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li id="logoutLi"><a class="dropdown-item" href="#">退出登录</a></li>
+          </ul>
+        </div>
+      </div>
+    
+    <main>
+      <div class="main-frame-box">
+        <nav class="navbar bg-body-tertiary">
+          <div class="container-fluid">
+              <a class="nav-link dropdown-toggle" id="nowStatus" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  订单状态
+                </a>
+                <ul class="dropdown-menu" id="filter-part">
+                  <li><a class="dropdown-item" href="order?status=1">买家未付款</a></li>
+                  <li><a class="dropdown-item" href="order?status=2">待商家发货</a></li>
+                  <li><a class="dropdown-item" href="order?status=3">买家未评价</a></li>
+                  <li><a class="dropdown-item" href="order?status=4">买家已评价</a></li>
+                </ul>
+          </div>
+        </nav>
+
+        
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          
+          {volist name='ordersList' id='orderItem'}
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-{$orderItem.orderId}" aria-expanded="false">
+                ORDER-{$orderItem.orderId}<span class="order-status">
+                  {if condition='$orderItem.is_pay eq 0'}
+                  买家未付款
+                  {elseif condition='($orderItem.is_pay eq 1) and ($orderItem.is_receive eq 0)'}
+                  待商家发货
+                  {elseif condition='($orderItem.is_receive eq 1) and ($orderItem.is_comment eq 0)'}
+                  买家未评价
+                  {elseif condition='$orderItem.is_comment eq 1'}
+                  买家已评价
+                  {/if}
+                </span>
+              </button>
+            </h2>
+            <div id="flush-collapse-{$orderItem.orderId}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                  <div class="user">
+                      <img class="userHead" src="__ROOT__/../phpBigHomework/pic/{$orderItem.userPicId}.jpg" />
+                      <span class="fs-5 username">{$orderItem.username}</span>
+                  </div>
+                  <div class="fs-1 consignee">
+                    <span class="consigneeName">{$orderItem.consigneeName}</span>
+                    <span class="phone">{$orderItem.phone}</span>
+                  </div>
+                  <span class="fs-4 address">{$orderItem.address}</span>
+                  <div class="contentTitleTx">购买商品明细</div>
+                  <div class="content">
+                    <table>
+                      <tr class='table-info'>
+                        <td class="image"><img src="__ROOT__/../phpBigHomework/pic/{$orderItem.goodPicId}.jpg" /></td>
+                        <td class="goodName">{$orderItem.goodName}</td>
+                        <td class="num">{$orderItem.num}件</td>
+                        <th class="sign-multi">X</th>
+                        <td class="price">￥{$orderItem.goodPrice}</td>
+                      </tr>
+                      <tr>
+                        <td colspan="4" class="sign-total">共计：</td>
+                        <td id="totalPrice">￥{$orderItem.goodPrice * $orderItem.num}</td>
+                      </tr>
+                    </table>
+                  </div>
+                  {if condition='($orderItem.is_pay eq 1) and ($orderItem.is_receive eq 0)'}
+                  <div class="changeStatus-part">
+                    <button type="button" class="btn btn-primary" class="changeStatus">我已发货</button>
+                  </div>
+                  {/if}
+              </div>
+            </div>
+          </div>
+          {/volist}
+          <!-- <div class="accordion-item">
+            <h2 class="accordion-header" >
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-2" aria-expanded="false">
+                2
+              </button>
+            </h2>
+            <div id="flush-collapse-2" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+              </div>
+            </div>
+          </div> -->
+
+        </div>
+      </div>
+    </main>
+      
+    <script type="text/javascript" src="__ROOT__/public/static/js/bootstrap.bundle.min.js"></script>
+
+    <script type="text/javascript" src="__ROOT__/public/static/js/main.js"></script>
+    <script type="text/javascript" src="__ROOT__/public/static/js/logout.js"></script>
+    <script type="text/javascript" src="__ROOT__/public/static/js/order.js"></script>
+</body>
+</html>
